@@ -196,7 +196,7 @@ public class VideoCapturePlus extends CordovaPlugin {
     // consider adding an allowflash param, setting Camera.Parameters.FLASH_MODE_ON/OFF/AUTO
 
     if (Build.VERSION.SDK_INT > 7) {
-      intent.putExtra("android.intent.extra.durationLimit", duration);
+      intent.putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, duration);
     }
 
     this.cordova.startActivityForResult(this, intent, CAPTURE_VIDEO);

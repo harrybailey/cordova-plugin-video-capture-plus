@@ -180,26 +180,13 @@ public class VideoCapturePlus extends CordovaPlugin {
   private void captureVideo(int duration, boolean highquality, boolean frontcamera) {
     Intent intent = new Intent(android.provider.MediaStore.ACTION_VIDEO_CAPTURE);
     String videoUri = getVideoContentUriFromFilePath(this.cordova.getActivity(), getTempDirectoryPath());
+
     intent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
+    intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
+    intent.putExtra(MediaStore.EXTRA_CAMERA_FACING, 1);
+    intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 30);
 
-    if (highquality) {
-      intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-    } else {
-      // If high quality set to false, force low quality for devices that default to high quality
-      intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-    }
-
-    if (frontcamera) {
-      intent.putExtra("android.intent.extras.CAMERA_FACING", android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT);
-    }
-
-    // consider adding an allowflash param, setting Camera.Parameters.FLASH_MODE_ON/OFF/AUTO
-
-    if (Build.VERSION.SDK_INT > 7) {
-      intent.putExtra(android.provider.MediaStore.EXTRA_DURATION_LIMIT, duration);
-    }
-
-    this.cordova.startActivityForResult(this, intent, CAPTURE_VIDEO);
+    this.cordova.startActivityForResult(this, intent, 0);
   }
 
   public static String getVideoContentUriFromFilePath(Context ctx, String filePath) {

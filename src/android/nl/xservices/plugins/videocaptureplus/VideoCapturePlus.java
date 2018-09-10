@@ -183,7 +183,7 @@ public class VideoCapturePlus extends CordovaPlugin {
 
     intent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri);
     intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 0);
-    intent.putExtra(MediaStore.EXTRA_CAMERA_FACING, 1);
+    intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
     intent.putExtra(MediaStore.EXTRA_DURATION_LIMIT, 30);
 
     this.cordova.startActivityForResult(this, intent, 0);

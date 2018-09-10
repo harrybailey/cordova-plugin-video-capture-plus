@@ -20,7 +20,7 @@
     </engines>
 
     <js-module src="www/VideoCapturePlus.js" name="VideoCapturePlus">
-        <clobbers target="window.plugins.videocaptureplus"/>
+        <clobbers target="cordova.plugins.videocaptureplus"/>
     </js-module>
 
     <!-- ios -->

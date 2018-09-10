@@ -54,9 +54,9 @@ public class VideoCapturePlus extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     this.callbackContext = callbackContext;
     this.limit = 1;
-    this.duration = 0;
+    this.duration = 30;
     this.highquality = false;
-    this.frontcamera = false;
+    this.frontcamera = true;
     this.results = new JSONArray();
 
     JSONObject options = args.optJSONObject(0);
